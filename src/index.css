@@ -1,0 +1,511 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+/* ==========================================================================
+   1. DESIGN TOKENS (CSS custom properties)
+   Centralizing colors/fonts/spacing here means every slide automatically
+   stays consistent, and the whole palette can be re-themed from one place.
+   ========================================================================== */
+:root {
+  /* --- Color tokens --- */
+  --bg: #14171c;
+  --bg-vignette: #0d0f13;
+  --panel: #1c212a;
+  --panel-border: #2b3240;
+  --text: #f5f3ee;
+  --text-muted: #9aa3ae;
+  --accent: #f2b155; /* amber "beacon" - voice guidance */
+  --accent-soft: #f2b15522;
+  --accent-2: #6ee7e0; /* cyan "landmark" - computer vision / SLAM */
+  --accent-2-soft: #6ee7e022;
+  --danger: #ff8a80;
+
+  /* --- Type tokens --- */
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  /* --- Spacing / sizing tokens --- */
+  --slide-pad-x: clamp(2rem, 6vw, 6rem);
+  --slide-pad-y: clamp(1.5rem, 5vh, 4rem);
+  --radius: 14px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 18px;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   2. LAYOUT: the slide "stage" and the slides themselves
+   ========================================================================== */
+
+.stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(ellipse at 20% 15%, var(--accent-soft), transparent 45%),
+    radial-gradient(ellipse at 85% 85%, var(--accent-2-soft), transparent 50%), var(--bg);
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--slide-pad-y) var(--slide-pad-x);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(40px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  overflow-y: auto;
+}
+
+.slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.slide.exit-left {
+  transform: translateX(-40px);
+  opacity: 0;
+}
+.slide.exit-right {
+  transform: translateX(40px);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide {
+    transition: opacity 0.2s linear;
+    transform: none !important;
+  }
+}
+
+.slide-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+  font-size: 0.85rem;
+  margin: 0 0 0.75rem 0;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1.08;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  line-height: 1.15;
+  margin: 0 0 1.25rem 0;
+  font-weight: 600;
+}
+
+p,
+li {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   3. SIGNATURE MOTIF: the "echo ping" — concentric rings from a dot.
+   ========================================================================== */
+.echo-ping {
+  position: absolute;
+  top: 50%;
+  right: clamp(1rem, 8vw, 9rem);
+  transform: translateY(-50%);
+  width: 320px;
+  height: 320px;
+  pointer-events: none;
+}
+.echo-ping .core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 24px 4px var(--accent-soft);
+}
+.echo-ping .ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-2);
+  opacity: 0;
+  animation: ping-out 3.2s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
+}
+.echo-ping .ring:nth-child(1) {
+  animation-delay: 0s;
+}
+.echo-ping .ring:nth-child(2) {
+  animation-delay: 1.05s;
+}
+.echo-ping .ring:nth-child(3) {
+  animation-delay: 2.1s;
+}
+
+@keyframes ping-out {
+  0% {
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    opacity: 0.9;
+    border-color: var(--accent-2);
+  }
+  80% {
+    opacity: 0.08;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    margin: -150px 0 0 -150px;
+    opacity: 0;
+    border-color: var(--accent);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .echo-ping .ring {
+    animation: none;
+    opacity: 0.35;
+  }
+}
+
+/* ==========================================================================
+   4. CONTENT PATTERNS: cards, grids, timeline, citation tags, problem flag
+   ========================================================================== */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.1rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  color: var(--accent-2);
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.card p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.list-clean {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 0 0;
+  display: grid;
+  gap: 0.9rem;
+}
+.list-clean li {
+  padding-left: 1.6rem;
+  position: relative;
+}
+.list-clean li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.timeline {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 1rem;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+}
+.timeline-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  margin-top: 0.35rem;
+}
+.timeline-item h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 0 0 0.35rem 0;
+  color: var(--text);
+}
+.timeline-item p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+.citation {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--bg);
+  background: var(--accent-2);
+  border-radius: 5px;
+  padding: 0.12rem 0.5rem;
+  margin: 0.2rem 0.3rem 0 0;
+}
+
+.problem-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--danger);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+}
+.problem-flag::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--danger);
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   5. NAVIGATION UI
+   ========================================================================== */
+
+.nav-controls {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  z-index: 20;
+}
+
+.nav-btn {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  color: var(--text);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.nav-btn:hover {
+  background: var(--panel-border);
+}
+.nav-btn:active {
+  transform: scale(0.94);
+}
+.nav-btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+.nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.dots {
+  display: flex;
+  gap: 0.6rem;
+}
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: var(--panel-border);
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+}
+.dot:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+.dot.is-active {
+  background: var(--accent);
+}
+.dot.is-active::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  animation: dot-ping 1.8s ease-out infinite;
+}
+@keyframes dot-ping {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dot.is-active::after {
+    animation: none;
+  }
+}
+
+.slide-counter {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  z-index: 20;
+}
+
+.kicker-brand {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.75rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  z-index: 20;
+}
+.kicker-brand span {
+  color: var(--accent);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   6. ALTERNATE / EXTRA CLASS DEFINITIONS
+   Used only if you splice one of the alternate slides from
+   src/data/slides.tsx into the deck. Kept here so styling is ready the
+   moment you do.
+   ========================================================================== */
+
+.slide--title-vibrant {
+  background: radial-gradient(circle at 30% 30%, #ff8a5c33, transparent 55%),
+    radial-gradient(circle at 75% 70%, #6ee7e033, transparent 55%), var(--bg);
+}
+.slide--title-vibrant h1 {
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.slide--tech-deep-dive .compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+.slide--tech-deep-dive .compare-col {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+.slide--tech-deep-dive .compare-col h3 {
+  font-family: var(--font-display);
+  margin-top: 0;
+}
+.slide--tech-deep-dive .compare-col.trad h3 {
+  color: var(--text-muted);
+}
+.slide--tech-deep-dive .compare-col.semantic h3 {
+  color: var(--accent-2);
+}
+
+.pipeline-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.pipeline-step {
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--accent-2);
+}

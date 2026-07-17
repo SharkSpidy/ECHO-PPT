@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/types.ts","./src/vite-env.d.ts","./src/components/EchoPing.tsx","./src/components/NavControls.tsx","./src/components/Slide.tsx","./src/data/slides.tsx","./src/hooks/useSlideshow.ts"],"version":"5.9.3"}
