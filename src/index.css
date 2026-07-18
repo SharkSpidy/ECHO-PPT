@@ -279,7 +279,7 @@ li {
 .lit-table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
+  table-layout: auto;
 }
 
 .lit-table th,
@@ -289,6 +289,8 @@ li {
   font-size: 0.85rem;
   line-height: 1.45;
   vertical-align: top;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .lit-table th {
@@ -297,13 +299,14 @@ li {
   font-weight: 600;
   color: var(--bg);
   background: var(--accent-2);
-  white-space: nowrap;
+  white-space: normal;
 }
 
-.lit-table th:nth-child(1) { width: 17%; }
-.lit-table th:nth-child(2) { width: 28%; }
-.lit-table th:nth-child(3) { width: 27%; }
-.lit-table th:nth-child(4) { width: 28%; }
+.lit-table th:nth-child(1) { width: 18%; }
+.lit-table th:nth-child(2) { width: 24%; }
+.lit-table th:nth-child(3) { width: 20%; }
+.lit-table th:nth-child(4) { width: 19%; }
+.lit-table th:nth-child(5) { width: 19%; }
 
 .lit-table tbody tr {
   background: var(--panel);
@@ -321,13 +324,14 @@ li {
   color: var(--text);
   font-weight: 600;
   font-size: 0.78rem;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .lit-table td.lit-paper {
   color: var(--text);
   font-style: italic;
   font-size: 0.8rem;
+  white-space: normal;
 }
 
 .problem-flag {
