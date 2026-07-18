@@ -149,7 +149,17 @@ li {
   transform: translateY(-50%);
   width: 320px;
   height: 320px;
-  pointer-events: none;
+  pointer-events: auto;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+}
+.echo-ping:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 8px;
+  border-radius: 50%;
 }
 .echo-ping .core {
   position: absolute;
@@ -161,6 +171,7 @@ li {
   border-radius: 50%;
   background: var(--accent);
   box-shadow: 0 0 24px 4px var(--accent-soft);
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
 .echo-ping .ring {
   position: absolute;
@@ -182,6 +193,27 @@ li {
 }
 .echo-ping .ring:nth-child(3) {
   animation-delay: 2.1s;
+}
+
+.echo-ping.is-active .core {
+  transform: scale(1.35);
+  box-shadow: 0 0 28px 8px var(--accent-soft);
+}
+
+.echo-ping.is-active .ring {
+  animation-duration: 1.2s;
+}
+
+.echo-ping-label {
+  position: absolute;
+  inset: auto 50% 1rem auto;
+  transform: translateX(50%);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0.85;
+  pointer-events: none;
 }
 
 @keyframes ping-out {
