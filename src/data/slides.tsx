@@ -1,61 +1,74 @@
 import type { SlideData } from "../types";
 
 /**
- * Literature Review source data, rendered as a pure table (Paper / Method /
- * Advantage / Disadvantage) rather than the earlier timeline layout — kept
- * as its own array so rows can be added/edited without touching markup.
+ * Literature Review source data, rendered as a pure table (Authors / Paper /
+ * Method / Advantage / Disadvantage) rather than the earlier timeline layout
+ * — kept as its own array so rows can be added/edited without touching markup.
+ *
+ * "authors" and "paper" (the actual paper title) were looked up from each
+ * source's publication record — the array used to key rows off the PDF
+ * filename instead, which isn't useful to a reader.
  */
-const literatureRows: { paper: string; method: string; advantage: string; disadvantage: string }[] = [
+const literatureRows: { authors: string; paper: string; method: string; advantage: string; disadvantage: string }[] = [
   {
-    paper: "sensors-19-03404-v2",
+    authors: "Real, S.; Araujo, A.",
+    paper: "Navigation Systems for the Blind and Visually Impaired: Past Work, Challenges, and Open Problems",
     method: "Traditional Electronic Travel Aids (ETAs) & sensory substitution devices",
     advantage: "Provides direct obstacle-contact feedback",
     disadvantage: "Overwhelms users with simultaneous feedback, causing cognitive overload",
   },
   {
-    paper: "brainsci-06-00020",
+    authors: "Jóhannesson, Ó.I.; Balan, O.; Unnthorsson, R.; Moldoveanu, A.; Kristjánsson, Á.",
+    paper: "The Sound of Vision Project: On the Feasibility of an Audio-Haptic Representation of the Environment, for the Visually Impaired",
     method: "Combined audio-haptic feedback",
     advantage: "Improves spatial resolution vs. audio-only guidance",
     disadvantage: "Requires additional wearable haptic hardware",
   },
   {
-    paper: "10209_2023_Article_973",
+    authors: "Paratore, M.T.; Leporini, B.",
+    paper: "Exploiting the Haptic and Audio Channels to Improve Orientation and Mobility Apps for the Visually Impaired",
     method: "Follow-up audio-haptic feedback study",
     advantage: "Confirms reduced cognitive load with combined feedback",
     disadvantage: "Findings limited to controlled study conditions",
   },
   {
-    paper: "sensors-21-01536-v2",
+    authors: "Chen, Z.; Liu, X.; Kojima, M.; Huang, Q.; Arai, T.",
+    paper: "A Wearable Navigation Device for Visually Impaired People Based on the Real-Time Semantic Visual SLAM System",
     method: "Real-time semantic Visual SLAM on wearable RGB-D camera",
     advantage: "Enables 3D scene understanding without heavy processing hardware",
     disadvantage: "Still computationally demanding for continuous real-time use",
   },
   {
-    paper: "ijerph-19-03151",
+    authors: "Bilal Salih, H.E.; Takeda, K.; Kobayashi, H.; Kakizawa, T.; Kawamoto, M.; Zempo, K.",
+    paper: "Use of Auditory Cues and Other Strategies as Sources of Spatial Information for People with Visual Impairment When Navigating Unfamiliar Environments",
     method: "Study of natural auditory cue reliance in VI navigation",
     advantage: "Identifies need for minimal, on-demand audio feedback",
     disadvantage: "Does not propose a deployable technical system",
   },
   {
-    paper: "s00530-024-01350-8",
+    authors: "Valipoor, M.; de Antonio, A.; Cabrera, J.",
+    paper: "Analysis and Design Framework for the Development of Indoor Scene Understanding Assistive Solutions for the Person with Visual Impairment/Blindness",
     method: "On-demand feedback design principles",
     advantage: "Avoids masking ambient / natural sound cues",
     disadvantage: "Requires precise trigger-timing to stay unobtrusive",
   },
   {
-    paper: "IEEE 10664580",
+    authors: "— (unverified, see note)",
+    paper: "IEEE Xplore doc. 10664580",
     method: "Supporting assistive-navigation reference",
     advantage: "Corroborates core design direction",
     disadvantage: "Limited implementation detail for direct reuse",
   },
   {
-    paper: "T&F 02564602.2020.1819893",
+    authors: "Kuriakose, B.; Shrestha, R.; Sandnes, F.E.",
+    paper: "Tools and Technologies for Blind and Visually Impaired Navigation Support: A Review",
     method: "Supporting assistive-navigation reference",
     advantage: "Adds cross-domain validation of approach",
     disadvantage: "Not focused specifically on indoor navigation",
   },
   {
-    paper: "MDPI 14/9/3945",
+    authors: "— (unverified, see note)",
+    paper: "MDPI 14(9):3945",
     method: "Supporting assistive-navigation reference",
     advantage: "Reinforces feasibility of sensor-fusion approach",
     disadvantage: "Scope narrower than ECHO's full pipeline",
@@ -175,6 +188,7 @@ export const slides: SlideData[] = [
           <table className="lit-table">
             <thead>
               <tr>
+                <th>Authors</th>
                 <th>Paper</th>
                 <th>Method</th>
                 <th>Advantage</th>
@@ -184,6 +198,7 @@ export const slides: SlideData[] = [
             <tbody>
               {literatureRows.map((row) => (
                 <tr key={row.paper}>
+                  <td className="lit-authors">{row.authors}</td>
                   <td className="lit-paper">{row.paper}</td>
                   <td>{row.method}</td>
                   <td>{row.advantage}</td>

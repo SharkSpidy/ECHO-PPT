@@ -317,11 +317,17 @@ li {
   color: var(--text-muted);
 }
 
-.lit-table td.lit-paper {
+.lit-table td.lit-authors {
   color: var(--text);
   font-weight: 600;
-  font-family: var(--font-mono);
   font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.lit-table td.lit-paper {
+  color: var(--text);
+  font-style: italic;
+  font-size: 0.8rem;
 }
 
 .problem-flag {
