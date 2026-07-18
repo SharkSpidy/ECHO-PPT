@@ -149,11 +149,42 @@ export const slides: SlideData[] = [
     ),
   },
   {
+    title: "Hardware & Software Requirements",
+    content: (
+      <>
+        <p className="eyebrow">04 · Hardware &amp; Software Requirements</p>
+        <h2>Estimated requirements to build ECHO</h2>
+        <div className="card-grid">
+          <div className="card">
+            <h3>Hardware</h3>
+            <ul className="list-clean">
+              <li>Portable laptop or mini-PC with Intel i5/i7 or Ryzen 5/7 processor.</li>
+              <li>8 GB RAM minimum, 16 GB recommended for smoother SLAM processing.</li>
+              <li>RGB or RGB-D camera for scene capture and localization.</li>
+              <li>Speaker or earphone for voice guidance output.</li>
+              <li>Optional wearable device for future haptic feedback.</li>
+            </ul>
+          </div>
+          <div className="card">
+            <h3>Software</h3>
+            <ul className="list-clean">
+              <li>Python for AI modules, computer vision, and voice processing.</li>
+              <li>OpenCV and Visual SLAM libraries for mapping and localization.</li>
+              <li>React + TypeScript for the presentation and interface components.</li>
+              <li>Vite for frontend development and fast local testing.</li>
+              <li>Optional cloud or local speech synthesis APIs for voice instructions.</li>
+            </ul>
+          </div>
+        </div>
+      </>
+    ),
+  },
+  {
     title: "Literature Review",
     className: "slide--wide",
     content: (
       <>
-        <p className="eyebrow">04 · Literature Review</p>
+        <p className="eyebrow">05 · Literature Review</p>
         <h2>Building on prior research</h2>
 
         <div className="lit-table-wrap">
@@ -187,7 +218,7 @@ export const slides: SlideData[] = [
     title: "Conclusion & Future Scope",
     content: (
       <>
-        <p className="eyebrow">05 · Conclusion &amp; Future Scope</p>
+        <p className="eyebrow">06 · Conclusion &amp; Future Scope</p>
         <h2>A reliable, low-cognitive-load path forward</h2>
         <p>
           ECHO provides a reliable, low-cognitive-load, and accessible navigation tool for visually
