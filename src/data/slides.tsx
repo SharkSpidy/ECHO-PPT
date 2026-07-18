@@ -162,7 +162,7 @@ export const slides: SlideData[] = [
               <li>8 GB RAM minimum, 16 GB recommended for smoother SLAM processing.</li>
               <li>RGB or RGB-D camera for scene capture and localization.</li>
               <li>Speaker or earphone for voice guidance output.</li>
-              <li>Wearable device for future haptic feedback.</li>
+              <li>Wearable device for haptic feedback.</li>
             </ul>
           </div>
           <div className="card">
