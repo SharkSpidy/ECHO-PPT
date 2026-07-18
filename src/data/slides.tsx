@@ -1,6 +1,68 @@
 import type { SlideData } from "../types";
 
 /**
+ * Literature Review source data, rendered as a pure table (Paper / Method /
+ * Advantage / Disadvantage) rather than the earlier timeline layout — kept
+ * as its own array so rows can be added/edited without touching markup.
+ */
+const literatureRows: { paper: string; method: string; advantage: string; disadvantage: string }[] = [
+  {
+    paper: "sensors-19-03404-v2",
+    method: "Traditional Electronic Travel Aids (ETAs) & sensory substitution devices",
+    advantage: "Provides direct obstacle-contact feedback",
+    disadvantage: "Overwhelms users with simultaneous feedback, causing cognitive overload",
+  },
+  {
+    paper: "brainsci-06-00020",
+    method: "Combined audio-haptic feedback",
+    advantage: "Improves spatial resolution vs. audio-only guidance",
+    disadvantage: "Requires additional wearable haptic hardware",
+  },
+  {
+    paper: "10209_2023_Article_973",
+    method: "Follow-up audio-haptic feedback study",
+    advantage: "Confirms reduced cognitive load with combined feedback",
+    disadvantage: "Findings limited to controlled study conditions",
+  },
+  {
+    paper: "sensors-21-01536-v2",
+    method: "Real-time semantic Visual SLAM on wearable RGB-D camera",
+    advantage: "Enables 3D scene understanding without heavy processing hardware",
+    disadvantage: "Still computationally demanding for continuous real-time use",
+  },
+  {
+    paper: "ijerph-19-03151",
+    method: "Study of natural auditory cue reliance in VI navigation",
+    advantage: "Identifies need for minimal, on-demand audio feedback",
+    disadvantage: "Does not propose a deployable technical system",
+  },
+  {
+    paper: "s00530-024-01350-8",
+    method: "On-demand feedback design principles",
+    advantage: "Avoids masking ambient / natural sound cues",
+    disadvantage: "Requires precise trigger-timing to stay unobtrusive",
+  },
+  {
+    paper: "IEEE 10664580",
+    method: "Supporting assistive-navigation reference",
+    advantage: "Corroborates core design direction",
+    disadvantage: "Limited implementation detail for direct reuse",
+  },
+  {
+    paper: "T&F 02564602.2020.1819893",
+    method: "Supporting assistive-navigation reference",
+    advantage: "Adds cross-domain validation of approach",
+    disadvantage: "Not focused specifically on indoor navigation",
+  },
+  {
+    paper: "MDPI 14/9/3945",
+    method: "Supporting assistive-navigation reference",
+    advantage: "Reinforces feasibility of sensor-fusion approach",
+    disadvantage: "Scope narrower than ECHO's full pipeline",
+  },
+];
+
+/**
  * The deck's content, one entry per slide, in presentation order.
  *
  * To add a slide: push another SlideData object into this array — the
@@ -103,72 +165,33 @@ export const slides: SlideData[] = [
   },
   {
     title: "Literature Review",
+    className: "slide--wide",
     content: (
       <>
         <p className="eyebrow">04 · Literature Review</p>
         <h2>Building on prior research</h2>
 
-        <div className="timeline">
-          <div className="timeline-item">
-            <div className="timeline-dot" />
-            <div>
-              <h3>Past work &amp; its limits</h3>
-              <p>
-                Traditional Electronic Travel Aids (ETAs) and sensory substitution devices often
-                overwhelm users with too much simultaneous feedback, causing cognitive overload.
-              </p>
-              <span className="citation">sensors-19-03404-v2</span>
-            </div>
-          </div>
-
-          <div className="timeline-item">
-            <div className="timeline-dot" />
-            <div>
-              <h3>Audio-haptic feedback</h3>
-              <p>
-                Combining audio and haptic feedback improves spatial resolution and reduces
-                cognitive load compared to audio-only guidance.
-              </p>
-              <span className="citation">brainsci-06-00020</span>
-              <span className="citation">10209_2023_Article_973</span>
-            </div>
-          </div>
-
-          <div className="timeline-item">
-            <div className="timeline-dot" />
-            <div>
-              <h3>Wearable SLAM</h3>
-              <p>
-                Integrating real-time semantic Visual SLAM into wearable RGB-D cameras enables 3D
-                scene understanding and voice guidance without heavy processing hardware.
-              </p>
-              <span className="citation">sensors-21-01536-v2</span>
-            </div>
-          </div>
-
-          <div className="timeline-item">
-            <div className="timeline-dot" />
-            <div>
-              <h3>Natural cues vs. AI cues</h3>
-              <p>
-                VI users rely heavily on natural auditory cues in unfamiliar spaces, so assistive
-                systems must give on-demand, minimal audio feedback rather than masking ambient sound.
-              </p>
-              <span className="citation">ijerph-19-03151</span>
-              <span className="citation">s00530-024-01350-8</span>
-            </div>
-          </div>
-
-          <div className="timeline-item">
-            <div className="timeline-dot" />
-            <div>
-              <h3>Further supporting references</h3>
-              <p>Additional peer-reviewed sources consulted during design.</p>
-              <span className="citation">IEEE 10664580</span>
-              <span className="citation">T&amp;F 02564602.2020.1819893</span>
-              <span className="citation">MDPI 14/9/3945</span>
-            </div>
-          </div>
+        <div className="lit-table-wrap">
+          <table className="lit-table">
+            <thead>
+              <tr>
+                <th>Paper</th>
+                <th>Method</th>
+                <th>Advantage</th>
+                <th>Disadvantage</th>
+              </tr>
+            </thead>
+            <tbody>
+              {literatureRows.map((row) => (
+                <tr key={row.paper}>
+                  <td className="lit-paper">{row.paper}</td>
+                  <td>{row.method}</td>
+                  <td>{row.advantage}</td>
+                  <td>{row.disadvantage}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </>
     ),

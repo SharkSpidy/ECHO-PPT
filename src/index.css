@@ -263,48 +263,65 @@ li {
   background: var(--accent);
 }
 
-.timeline {
-  margin-top: 1.5rem;
-  display: grid;
-  gap: 1rem;
-}
-.timeline-item {
-  display: grid;
-  grid-template-columns: 28px 1fr;
-  gap: 1rem;
-  background: var(--panel);
-  border: 1px solid var(--panel-border);
-  border-radius: var(--radius);
-  padding: 1rem 1.25rem;
-}
-.timeline-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--accent-2);
-  margin-top: 0.35rem;
-}
-.timeline-item h3 {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  margin: 0 0 0.35rem 0;
-  color: var(--text);
-}
-.timeline-item p {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.98rem;
+/* Literature Review needs more horizontal room for its table than the
+   980px column other slides use. */
+.slide--wide .slide-inner {
+  max-width: 1200px;
 }
 
-.citation {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
+.lit-table-wrap {
+  margin-top: 1.5rem;
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.lit-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.lit-table th,
+.lit-table td {
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  vertical-align: top;
+}
+
+.lit-table th {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
   color: var(--bg);
   background: var(--accent-2);
-  border-radius: 5px;
-  padding: 0.12rem 0.5rem;
-  margin: 0.2rem 0.3rem 0 0;
+  white-space: nowrap;
+}
+
+.lit-table th:nth-child(1) { width: 17%; }
+.lit-table th:nth-child(2) { width: 28%; }
+.lit-table th:nth-child(3) { width: 27%; }
+.lit-table th:nth-child(4) { width: 28%; }
+
+.lit-table tbody tr {
+  background: var(--panel);
+  border-top: 1px solid var(--panel-border);
+}
+.lit-table tbody tr:nth-child(even) {
+  background: var(--bg);
+}
+
+.lit-table td {
+  color: var(--text-muted);
+}
+
+.lit-table td.lit-paper {
+  color: var(--text);
+  font-weight: 600;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
 }
 
 .problem-flag {
