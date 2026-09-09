@@ -1,70 +1,42 @@
-# ECHO — Presentation Deck (Vite + React + TypeScript)
+# Echo Deck
 
-A React/TS port of the ECHO navigation-assistant slideshow. Same design
-tokens, motion, and accessibility behavior as the original single-file
-HTML version, now split into components + a custom hook.
+A Vite + React + TypeScript project with two independent pages:
 
-## Run it
+| Route         | What it is                                                         | Source        |
+| ------------- | ------------------------------------------------------------------- | ------------- |
+| `/`           | Interactive system architecture dashboard (click an agent for its internal pipeline) | `src/`        |
+| `/deck.html`  | The ECHO pitch deck slideshow                                       | `src-deck/`   |
+
+The two pages are wired together with plain links (**"View the pitch deck"** on the
+dashboard, **"← Architecture"** on the deck) so you can jump between them, but they are
+otherwise fully isolated: separate React trees, separate `main.tsx` entry points, and
+separate stylesheets (Tailwind v4 for the dashboard, hand-written CSS for the deck).
+That isolation is intentional — it means neither page's global styles (resets, `h1`/`p`
+rules, `overflow: hidden`, etc.) can leak into the other, even though they ship in the
+same project and the same `npm run build`.
+
+## Getting started
 
 ```bash
 npm install
-npm run dev
-```
-
-Then open the local URL Vite prints (usually `http://localhost:5173`).
-
-## Build for production
-
-```bash
-npm run build
-npm run preview   # optional: preview the production build locally
+npm run dev      # serves both / and /deck.html
+npm run build    # outputs dist/index.html and dist/deck.html
+npm run preview  # preview the production build
 ```
 
 ## Project structure
 
 ```
-src/
-  main.tsx              entry point, mounts <App />
-  App.tsx                stage layout: brand mark, counter, sr-live region,
-                          slide list, nav controls
-  index.css              all design tokens + styles (ported 1:1 from the
-                          original <style> block)
-  types.ts                shared SlideData type
-  data/
-    slides.tsx            slide content — one object per slide; add a
-                           slide by pushing another entry here
-  hooks/
-    useSlideshow.ts        current index, exit-direction animation state,
-                           keyboard (arrows/PageUp/PageDown/Home/End) and
-                           swipe navigation
-  components/
-    Slide.tsx              a single <section class="slide">, handles
-                           is-active / exit-left / exit-right classes
-    EchoPing.tsx            the signature sonar-ping hero graphic
-    NavControls.tsx         prev/next buttons + dot indicator
+index.html          entry HTML for the dashboard
+deck.html            entry HTML for the pitch deck
+src/                 dashboard: App.tsx, index.css (Tailwind)
+src-deck/             deck: App.tsx, components/, data/, hooks/, index.css
+vite.config.ts        registers both HTML files as build entry points
 ```
 
-## Adding or editing slides
+## Stack
 
-Edit `src/data/slides.tsx`. Each entry is:
-
-```ts
-{
-  title: "Section name",      // used by nav-dot labels, aria-live, tab title
-  content: <>...JSX...</>,     // rendered inside the centered .slide-inner column
-  className: "optional-extra-class",
-}
-```
-
-The bottom of that file sketches three alternate slides carried over from
-the original design (a more vibrant title treatment, a technical SLAM
-deep-dive, and an extended literature-review grid) — copy one into the
-array if you want to use it; their styles already exist in `index.css`.
-
-## Accessibility notes
-
-- Keyboard: `→`/`PageDown` next, `←`/`PageUp` previous, `Home`/`End` jump
-  to first/last slide.
-- Touch: swipe left/right to navigate.
-- `prefers-reduced-motion` disables slide-drift and ping animations.
-- Slide changes are announced via a visually-hidden `aria-live` region.
+- Vite 8 (multi-page build via `build.rollupOptions.input`)
+- React 19 + TypeScript
+- Tailwind CSS v4 (`@tailwindcss/vite`) for the dashboard
+- [lucide-react](https://lucide.dev/) icons for the dashboard
