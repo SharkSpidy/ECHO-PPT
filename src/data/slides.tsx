@@ -1,4 +1,7 @@
 import type { SlideData } from "../types";
+import { ArchitectureSlide } from "../components/ArchitectureSlide";
+import { AgentDetailSlide } from "../components/AgentDetailSlide";
+import { AGENTS } from "./agents";
 
 /**
  * Literature Review source data, rendered as a pure table (Authors / Paper /
@@ -180,11 +183,20 @@ export const slides: SlideData[] = [
     ),
   },
   {
+    title: "Architecture",
+    className: "slide--wide",
+    content: <ArchitectureSlide />,
+  },
+  ...AGENTS.map((agent, i) => ({
+    title: agent.slideTitle,
+    content: <AgentDetailSlide agent={agent} eyebrowNumber={String(6 + i).padStart(2, "0")} />,
+  })),
+  {
     title: "Literature Review",
     className: "slide--wide",
     content: (
       <>
-        <p className="eyebrow">05 · Literature Review</p>
+        <p className="eyebrow">09 · Literature Review</p>
         <h2>Building on prior research</h2>
 
         <div className="lit-table-wrap">
@@ -218,7 +230,7 @@ export const slides: SlideData[] = [
     title: "Conclusion & Future Scope",
     content: (
       <>
-        <p className="eyebrow">06 · Conclusion &amp; Future Scope</p>
+        <p className="eyebrow">10 · Conclusion &amp; Future Scope</p>
         <h2>A reliable, low-cognitive-load path forward</h2>
         <p>
           ECHO provides a reliable, low-cognitive-load, and accessible navigation tool for visually
