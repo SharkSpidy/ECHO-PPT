@@ -95,7 +95,7 @@ export function ArchitectureSlide() {
           <div className="hw-card">
             <Hand size={18} className="hw-icon" style={{ color: "var(--accent-3)" }} />
             <div>
-              <div className="hw-card-label">Haptic Glove</div>
+              <div className="hw-card-label">Haptic Wristband</div>
               <div className="hw-card-sub">ESP32 / Arduino</div>
             </div>
           </div>

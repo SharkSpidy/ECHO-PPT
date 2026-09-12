@@ -50,9 +50,9 @@ const literatureRowsPage1 = [
   },
   {
     authors: "Chen, Liu, Kojima, Huang & Arai",
-    paper: "A Wearable Navigation Device for Visually Impaired People Based on the Real-Time Semantic Visual SLAM System",
+    paper: "A Wearable Navigation Device for Visually Impaired People Based on Real-Time Semantic Visual Localization",
     advantage:
-      "Real-time semantic Visual SLAM (ORB-SLAM + CNN segmentation) speaks scene descriptions at roughly 25 fps with centimetre-level accuracy.",
+      "Real-time semantic visual localization (feature tracking + CNN segmentation) speaks scene descriptions at roughly 25 fps with centimetre-level accuracy.",
     limitation:
       "Pure visual odometry drifts over time and needs GPU-class embedded hardware plus IMU/GPS fusion.",
     relevance:
@@ -62,7 +62,7 @@ const literatureRowsPage1 = [
     authors: "Real & Araujo",
     paper: "Navigation Systems for the Blind and Visually Impaired: Past Work, Challenges, and Open Problems",
     advantage:
-      "Seven-decade survey of ETAs, sensory substitution, and vision/SLAM systems; proposes a positioning–monitoring–interface framework.",
+      "Seven-decade survey of ETAs, sensory substitution, and vision-based localization systems; proposes a positioning–monitoring–interface framework.",
     limitation: "Review-only — no original implementation or comparative evaluation of localization strategies.",
     relevance:
       "Positions ECHO within the research landscape and supports splitting feedback across haptic and audio channels.",
@@ -128,9 +128,9 @@ const literatureRowsPage2 = [
     authors: "Hou, Zhao, Wang & Liu",
     paper: "Knowledge Driven Indoor Object-Goal Navigation Aid for Visually Impaired People",
     advantage:
-      "Helmet-mounted RGB-D system uses a learned object-relation knowledge graph with ORB-SLAM2 to guide users to target objects.",
-    limitation: "Needs full SLAM and Jetson-class GPU hardware, with roughly 258 ms of mapping latency per frame.",
-    relevance: "Useful contrast case — reinforces that ECHO's simpler route-following task does not need SLAM-level infrastructure.",
+      "Helmet-mounted RGB-D system uses a learned object-relation knowledge graph with visual localization to guide users to target objects.",
+    limitation: "Needs a full visual mapping pipeline and Jetson-class GPU hardware, with roughly 258 ms of mapping latency per frame.",
+    relevance: "Useful contrast case — reinforces that ECHO's simpler route-following task does not need full mapping infrastructure.",
   },
 ];
 
@@ -209,7 +209,7 @@ const existingSystemRows = [
     relevance: "Closest prior art",
   },
   {
-    approach: "Full Visual SLAM Systems",
+    approach: "Full Visual Localization Systems",
     strength: "Rich, real-time scene description with centimetre-level accuracy.",
     limitation: "Accumulates drift over time and needs GPU-class embedded hardware.",
     relevance: "Comparison",
@@ -240,7 +240,7 @@ const tocEntries = [
  * the Literature Review slides. */
 const references = [
   "Widyawan, A. B. Saputra & P. I. Santosa, \u201cINVys: Indoor Navigation System for Persons with Visual Impairment Using RGB-D Camera.\u201d",
-  "Z. Chen, X. Liu, M. Kojima, Q. Huang & T. Arai, \u201cA Wearable Navigation Device for Visually Impaired People Based on the Real-Time Semantic Visual SLAM System.\u201d",
+  "Z. Chen, X. Liu, M. Kojima, Q. Huang & T. Arai, \u201cA Wearable Navigation Device for Visually Impaired People Based on Real-Time Semantic Visual Localization.\u201d",
   "S. Real & A. Araujo, \u201cNavigation Systems for the Blind and Visually Impaired: Past Work, Challenges, and Open Problems.\u201d",
   "B. Li, J. P. Munoz, X. Rong, Q. Chen, J. Xiao, Y. Tian, A. Arditi & M. Yousuf, \u201cVision-Based Mobile Indoor Assistive Navigation Aid for Blind People (ISANA).\u201d",
   "P. Costa, H. Fernandes, P. Vasconcelos, P. Coelho, J. Barroso & L. Hadjileontiadis, \u201cLandmarks Detection to Assist the Navigation of Visually Impaired People.\u201d",
@@ -267,7 +267,7 @@ export const slides: SlideData[] = [
         </h1>
         <p className="subtitle">
           Promoting independence and accessibility through computer vision,
-          Visual SLAM, and real-time AI voice guidance.
+          VPR, and real-time AI voice guidance.
         </p>
         <p
           style={{
@@ -352,7 +352,7 @@ export const slides: SlideData[] = [
             <p>Detects landmarks, obstacles, and scene context from a single camera feed.</p>
           </div>
           <div className="card">
-            <h3>Visual SLAM</h3>
+            <h3>Visual Place Recognition (VPR)</h3>
             <p>Localizes the user's position along a pre-mapped indoor route in real time.</p>
           </div>
           <div className="card">
@@ -402,7 +402,7 @@ export const slides: SlideData[] = [
           </div>
           <div className="card">
             <h3>Indoor Localization</h3>
-            <p>Localize the user's position along a pre-mapped indoor route in real time using Visual SLAM.</p>
+            <p>Recognize the user's position along a pre-mapped indoor route in real time using VPR.</p>
           </div>
           <div className="card">
             <h3>Clear Voice Guidance</h3>
@@ -410,7 +410,7 @@ export const slides: SlideData[] = [
           </div>
           <div className="card">
             <h3>Redundant Haptic Feedback</h3>
-            <p>Deliver obstacle-proximity cues through a wearable glove, so warnings never depend on hearing alone.</p>
+            <p>Deliver obstacle-proximity cues through a Haptic Wristband, so warnings never depend on hearing alone.</p>
           </div>
           <div className="card">
             <h3>Self-Contained Wearable Hardware</h3>
@@ -435,7 +435,7 @@ export const slides: SlideData[] = [
           </div>
           <div className="card">
             <h3>Hardware Fit</h3>
-            <p>A single RGB/RGB-D camera, a wearable haptic glove, and an in-ear audio module, running on a portable laptop or mini-PC.</p>
+            <p>A Kinect sensor, a Haptic Wristband, and an in-ear audio module, running on a portable laptop or mini-PC.</p>
           </div>
           <div className="card">
             <h3>Feedback Channels</h3>
@@ -446,7 +446,7 @@ export const slides: SlideData[] = [
           Core MVP
         </p>
         <p style={{ fontWeight: 600, fontSize: "1.2rem" }}>
-          Camera feed → landmark/obstacle detection → SLAM localization → voice + haptic guidance
+          Kinect sensor feed → landmark/obstacle detection → VPR localization → voice + haptic guidance
         </p>
         <p className="subtitle" style={{ marginTop: "1rem" }}>
           Out of scope for this prototype: dynamic on-the-fly map generation for unmapped spaces, expanded wearable
@@ -634,17 +634,17 @@ export const slides: SlideData[] = [
             <h3>Hardware</h3>
             <ul className="list-clean">
               <li>Portable laptop or mini-PC with Intel i5/i7 or Ryzen 5/7 processor.</li>
-              <li>8 GB RAM minimum, 16 GB recommended for smoother SLAM processing.</li>
-              <li>RGB or RGB-D camera for scene capture and localization.</li>
+              <li>8 GB RAM minimum, 16 GB recommended for smoother VPR processing.</li>
+              <li>Kinect sensor for RGB-D scene capture and localization.</li>
               <li>Speaker or earphone for voice guidance output.</li>
-              <li>Wearable device for haptic feedback.</li>
+              <li>Haptic Wristband with ESP32 / Arduino motor control.</li>
             </ul>
           </div>
           <div className="card">
             <h3>Software</h3>
             <ul className="list-clean">
               <li>Python for AI modules, computer vision, and voice processing.</li>
-              <li>OpenCV and Visual SLAM libraries for mapping and localization.</li>
+              <li>OpenCV and VPR libraries for visual place recognition and localization.</li>
               <li>React + TypeScript for the presentation and interface components.</li>
               <li>Vite for frontend development and fast local testing.</li>
               <li>Optional cloud or local speech synthesis APIs for voice instructions.</li>
@@ -665,7 +665,7 @@ export const slides: SlideData[] = [
         <div className="card-grid">
           <div className="card">
             <h3>Reliable Navigation</h3>
-            <p>A low-cognitive-load navigation tool for indoor use, combining computer vision, Visual SLAM, and voice guidance.</p>
+            <p>A low-cognitive-load navigation tool for indoor use, combining computer vision, VPR, and voice guidance.</p>
           </div>
           <div className="card">
             <h3>Real-Time Hazard Avoidance</h3>
@@ -754,7 +754,7 @@ export const slides: SlideData[] = [
         <p>
           ECHO provides a reliable, low-cognitive-load, and accessible navigation tool for visually
           impaired users in indoor environments — grounded in real-time computer vision, Visual
-          SLAM, and voice guidance.
+          VPR, and voice guidance.
         </p>
         <div className="card-grid">
           <div className="card">

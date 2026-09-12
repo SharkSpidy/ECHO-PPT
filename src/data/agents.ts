@@ -39,7 +39,7 @@ export interface AgentInfo {
 }
 
 // Reuses the deck's existing semantic tokens rather than inventing new
-// colors: --accent-2 (cyan) is already "computer vision / SLAM" and
+// colors: --accent-2 (cyan) is already "computer vision / VPR" and
 // --accent (amber) is already "voice guidance" in index.css. --accent-3
 // (soft violet) is added alongside them for the Haptic Agent.
 export const AGENTS: AgentInfo[] = [
@@ -85,9 +85,9 @@ export const AGENTS: AgentInfo[] = [
     name: "Haptic Agent",
     icon: Hand,
     color: "var(--accent-3)",
-    tagline: "Converts nearby obstacles into vibration patterns on the glove.",
+    tagline: "Converts nearby obstacles into vibration patterns on the wristband.",
     inputSource: "Local Message Broker",
-    outputTarget: "Haptic Glove (ESP32)",
+    outputTarget: "Haptic Wristband (ESP32)",
     pipeline: [
       {
         stage: "INPUT",
@@ -111,7 +111,7 @@ export const AGENTS: AgentInfo[] = [
         stage: "OUTPUT",
         icon: Hand,
         title: "Serial Out to ESP32",
-        detail: "Streams the command frame to the glove's motor controller to fire the correct vibration motor.",
+        detail: "Streams the command frame to the wristband's motor controller to fire the correct vibration motor.",
       },
     ],
   },
