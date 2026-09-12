@@ -16,8 +16,8 @@ export function ArchitectureSlide() {
 
   return (
     <>
-      <p className="eyebrow">05 · System Architecture</p>
-      <h2>How Echo Deck is wired together</h2>
+      <p className="eyebrow">10 · System Architecture / Block Diagram</p>
+      <h2>How ECHO is wired together</h2>
       <p className="subtitle">
         Every component runs locally inside a gutted Xbox 360 S shell — no cloud, no signal to
         lose indoors. Click an agent to see its internal pipeline.

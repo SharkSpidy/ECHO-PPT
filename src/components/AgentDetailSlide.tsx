@@ -9,7 +9,7 @@ import { useSlideNav } from "../context/SlideNavContext";
  * per-slide from data/slides.tsx rather than read from a route param,
  * since this deck has no router.
  */
-export function AgentDetailSlide({ agent, eyebrowNumber }: { agent: AgentInfo; eyebrowNumber: string }) {
+export function AgentDetailSlide({ agent, sectionLabel }: { agent: AgentInfo; sectionLabel: string }) {
   const nav = useSlideNav();
   const Icon = agent.icon;
 
@@ -21,7 +21,7 @@ export function AgentDetailSlide({ agent, eyebrowNumber }: { agent: AgentInfo; e
       </button>
 
       <p className="eyebrow" style={{ color: agent.color }}>
-        {eyebrowNumber} · Agent Internals
+        {sectionLabel}
       </p>
       <h2 className="agent-detail-title">
         <span className="agent-detail-icon" style={{ color: agent.color, background: `color-mix(in srgb, ${agent.color} 16%, transparent)` }}>
