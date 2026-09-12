@@ -762,8 +762,8 @@ export const slides: SlideData[] = [
             <p>Moving beyond pre-mapped routes toward on-the-fly indoor mapping.</p>
           </div>
           <div className="card">
-            <h3>Wearable smart devices</h3>
-            <p>Integrating with smart bands for optional haptic feedback.</p>
+            <h3>Night Vision</h3>
+            <p>Integrating with IR cameras for low-light navigation.</p>
           </div>
           <div className="card">
             <h3>Unfamiliar environments</h3>
