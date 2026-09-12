@@ -167,6 +167,19 @@ function LiteratureTable({ rows, page }: { rows: typeof literatureRowsPage1; pag
   );
 }
 
+function UMLDiagramSlide({ title, image, description }: { title: string; image: string; description: string }) {
+  return (
+    <>
+      <p className="eyebrow">08 · UML Diagrams</p>
+      <h2>{title}</h2>
+      <p className="subtitle uml-description">{description}</p>
+      <div className="uml-diagram-frame">
+        <img className="uml-diagram" src={image} alt={`${title} UML diagram`} />
+      </div>
+    </>
+  );
+}
+
 /** Existing-system comparison rows — general categories of prior art
  * (not individual papers; see Literature Review for those), grounded in
  * the Problem Statement and the Literature Review source document. */
@@ -523,20 +536,47 @@ export const slides: SlideData[] = [
 
   // ------------------------------------------------------------ 08 UML Diagrams
   {
-    title: "UML Diagrams",
+    title: "Use-Case Diagram",
+    className: "slide--wide",
     content: (
-      <>
-        <p className="eyebrow">08 · UML Diagrams</p>
-        <h2>UML Diagrams</h2>
-        <p>
-          Detailed UML artifacts — use-case, sequence, activity, and class diagrams — are planned for the next
-          project phase, once the Vision, Haptic, and Voice agent interfaces are finalized.
-        </p>
-        <p className="subtitle">
-          For the current system-level view, see System Architecture (Section 10) and Modules / Main Features
-          (Section 11).
-        </p>
-      </>
+      <UMLDiagramSlide
+        title="Use-Case Diagram"
+        image="/images/usecase.png"
+        description="Actors and system interactions for ECHO's assistive navigation workflow."
+      />
+    ),
+  },
+  {
+    title: "Sequence Diagram",
+    className: "slide--wide",
+    content: (
+      <UMLDiagramSlide
+        title="Sequence Diagram"
+        image="/images/sequence.png"
+        description="The runtime message flow from sensing through agent processing to user feedback."
+      />
+    ),
+  },
+  {
+    title: "Activity Diagram",
+    className: "slide--wide",
+    content: (
+      <UMLDiagramSlide
+        title="Activity Diagram"
+        image="/images/activity.png"
+        description="The activity flow for detecting, interpreting, and communicating navigation events."
+      />
+    ),
+  },
+  {
+    title: "Class Diagram",
+    className: "slide--wide",
+    content: (
+      <UMLDiagramSlide
+        title="Class Diagram"
+        image="/images/class.png"
+        description="The core software classes and relationships supporting ECHO's modular architecture."
+      />
     ),
   },
 
