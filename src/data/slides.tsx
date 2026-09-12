@@ -435,7 +435,7 @@ export const slides: SlideData[] = [
           </div>
           <div className="card">
             <h3>Hardware Fit</h3>
-            <p>A Kinect sensor, a Haptic Wristband, and an in-ear audio module, running on a portable laptop or mini-PC.</p>
+            <p>Kinect sensors, a Haptic Wristband, and an in-ear audio module, running on a portable laptop or mini-PC.</p>
           </div>
           <div className="card">
             <h3>Feedback Channels</h3>
@@ -446,7 +446,7 @@ export const slides: SlideData[] = [
           Core MVP
         </p>
         <p style={{ fontWeight: 600, fontSize: "1.2rem" }}>
-          Kinect sensor feed → landmark/obstacle detection → VPR localization → voice + haptic guidance
+          Kinect sensors feed → landmark/obstacle detection → VPR localization → voice + haptic guidance
         </p>
         <p className="subtitle" style={{ marginTop: "1rem" }}>
           Out of scope for this prototype: dynamic on-the-fly map generation for unmapped spaces, expanded wearable
@@ -599,7 +599,7 @@ export const slides: SlideData[] = [
           </div>
           <div className="card">
             <h3>Output</h3>
-            <p>The result goes straight to hardware — the glove's motor driver, the in-ear audio panner, or back onto the Broker for the next agent.</p>
+            <p>The result goes straight to hardware — the wristband's motor driver, the in-ear audio panner, or back onto the Broker for the next agent.</p>
           </div>
         </div>
         <p className="subtitle" style={{ marginTop: "1.5rem" }}>
@@ -635,7 +635,7 @@ export const slides: SlideData[] = [
             <ul className="list-clean">
               <li>Portable laptop or mini-PC with Intel i5/i7 or Ryzen 5/7 processor.</li>
               <li>8 GB RAM minimum, 16 GB recommended for smoother VPR processing.</li>
-              <li>Kinect sensor for RGB-D scene capture and localization.</li>
+              <li>Kinect sensors for RGB-D scene capture and localization.</li>
               <li>Speaker or earphone for voice guidance output.</li>
               <li>Haptic Wristband with ESP32 / Arduino motor control.</li>
             </ul>
@@ -705,7 +705,7 @@ export const slides: SlideData[] = [
           </div>
           <div className="card">
             <h3>Stage 3</h3>
-            <p>Haptic Agent — distance-to-vibration mapping and glove integration.</p>
+            <p>Haptic Agent — distance-to-vibration mapping and wristband integration.</p>
           </div>
           <div className="card">
             <h3>Stage 4</h3>
@@ -753,7 +753,7 @@ export const slides: SlideData[] = [
         <h2>A reliable, low-cognitive-load path forward</h2>
         <p>
           ECHO provides a reliable, low-cognitive-load, and accessible navigation tool for visually
-          impaired users in indoor environments — grounded in real-time computer vision, Visual
+          impaired users in indoor environments — grounded in real-time computer vision,
           VPR, and voice guidance.
         </p>
         <div className="card-grid">
