@@ -29,7 +29,6 @@ export function EchoPing() {
       <div className="ring" />
       <div className="ring" />
       <div className="core" />
-      <span className="echo-ping-label">Tap to scan</span>
     </button>
   );
 }
