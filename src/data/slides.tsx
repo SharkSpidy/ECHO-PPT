@@ -266,8 +266,7 @@ export const slides: SlideData[] = [
           for Visually Impaired Users
         </h1>
         <p className="subtitle">
-          Promoting independence and accessibility through computer vision,
-          VPR, and real-time AI voice guidance.
+          Indoor navigation · Computer vision · VPR · AI voice guidance
         </p>
         <p
           style={{
@@ -277,7 +276,7 @@ export const slides: SlideData[] = [
             marginTop: "1.5rem",
           }}
         >
-          Guided by Sweety Joy
+          Guided by Ms. Sweety Joy
         </p>
       </>
     ),
@@ -293,20 +292,20 @@ export const slides: SlideData[] = [
         <div className="card-grid">
           <div className="card">
             <h3>Team Member 01</h3>
-            <p>Delna Maria Joseph</p>
+            <p>Delna Maria Joseph (AIK23CS052)</p>
           </div>
           <div className="card">
             <h3>Team Member 02</h3>
-            <p>Diya S</p>
+            <p>Diya S (AIK23CS054)</p>
           </div>
           <div className="card">
             <h3>Team Member 03</h3>
-            <p>Joseph Shibu</p>
+            <p>Joseph Shibu (AIK23CS079)</p>
           </div>
         </div>
         <div className="card" style={{ marginTop: "1.1rem", borderLeft: "3px solid var(--accent)" }}>
           <h3 style={{ color: "var(--accent)" }}>Project Guide</h3>
-          <p>Sweety Joy</p>
+          <p>Ms. Sweety Joy</p>
         </div>
       </>
     ),
@@ -340,28 +339,24 @@ export const slides: SlideData[] = [
         <p className="eyebrow">01 · Introduction / Background</p>
         <h2>What is ECHO?</h2>
         <p>
-          ECHO is a prototype indoor navigation system for visually impaired
-          (VI) users. A single camera performs visual localization, detects
-          landmarks and obstacles, and figures out exactly where the user is
-          along a pre-mapped route — then speaks real-time voice instructions
-          to guide them safely around what's in their way.
+          Prototype indoor navigation system for visually impaired (VI) users.
         </p>
         <div className="card-grid">
           <div className="card">
             <h3>Computer Vision</h3>
-            <p>Detects landmarks, obstacles, and scene context from a single camera feed.</p>
+            <p>Landmarks · Obstacles · Scene context · Single camera feed</p>
           </div>
           <div className="card">
             <h3>Visual Place Recognition (VPR)</h3>
-            <p>Localizes the user's position along a pre-mapped indoor route in real time.</p>
+            <p>Real-time position · Pre-mapped indoor route</p>
           </div>
           <div className="card">
             <h3>AI Voice Guidance</h3>
-            <p>Converts spatial understanding into clear, timely spoken directions.</p>
+            <p>Spatial understanding · Timely spoken directions</p>
           </div>
           <div className="card">
             <h3>Obstacle Avoidance</h3>
-            <p>Continuously re-routes guidance to keep the user clear of hazards.</p>
+            <p>Continuous hazard detection · Safe route guidance</p>
           </div>
         </div>
       </>
@@ -377,12 +372,12 @@ export const slides: SlideData[] = [
         <span className="problem-flag">The gap in mobility today</span>
         <h2>Traditional aids can't tell you what's around you.</h2>
         <ul className="list-clean">
-          <li>Visually impaired individuals face significant hurdles navigating unfamiliar indoor spaces.</li>
+          <li>Unfamiliar indoor spaces create major mobility barriers.</li>
           <li>
-            White canes and guide dogs are excellent at obstacle contact, but cannot provide scene
-            understanding, detect upper-body obstacles, or convey spatial awareness of landmarks.
+            White canes and guide dogs: obstacle contact; limited scene understanding, upper-body
+            obstacle detection, and landmark awareness.
           </li>
-          <li>Without contextual information about a space, users experience anxiety that limits independent mobility.</li>
+          <li>Limited spatial context increases anxiety and reduces independent mobility.</li>
         </ul>
       </>
     ),
@@ -398,23 +393,23 @@ export const slides: SlideData[] = [
         <div className="card-grid">
           <div className="card">
             <h3>Real-Time Obstacle Detection</h3>
-            <p>Detect landmarks, obstacles, and scene context from a single wearable camera feed.</p>
+            <p>Landmarks · Obstacles · Scene context · Wearable camera</p>
           </div>
           <div className="card">
             <h3>Indoor Localization</h3>
-            <p>Recognize the user's position along a pre-mapped indoor route in real time using VPR.</p>
+            <p>Real-time VPR localization on pre-mapped indoor routes</p>
           </div>
           <div className="card">
             <h3>Clear Voice Guidance</h3>
-            <p>Convert spatial understanding into timely spoken directions without overwhelming the user.</p>
+            <p>Timely spoken directions · Low cognitive load</p>
           </div>
           <div className="card">
             <h3>Redundant Haptic Feedback</h3>
-            <p>Deliver obstacle-proximity cues through a Haptic Wristband, so warnings never depend on hearing alone.</p>
+            <p>Obstacle proximity cues · Haptic Wristband · Multisensory alerts</p>
           </div>
           <div className="card">
             <h3>Self-Contained Wearable Hardware</h3>
-            <p>Run every agent locally inside one wearable housing — no cloud, no signal to lose indoors.</p>
+            <p>Local agents · Single wearable housing · No cloud dependency</p>
           </div>
         </div>
       </>
@@ -431,27 +426,28 @@ export const slides: SlideData[] = [
         <div className="card-grid">
           <div className="card">
             <h3>Environment</h3>
-            <p>Indoor, pre-mapped routes such as corridors and rooms — not outdoor or unfamiliar spaces yet.</p>
+            <p>Indoor pre-mapped corridors and rooms</p>
           </div>
           <div className="card">
             <h3>Hardware Fit</h3>
-            <p>Kinect sensors, a Haptic Wristband, and an in-ear audio module, running on a portable laptop or mini-PC.</p>
+            <p>Kinect · Haptic Wristband · In-ear audio · Laptop or mini-PC</p>
           </div>
           <div className="card">
             <h3>Feedback Channels</h3>
-            <p>Combined voice guidance and haptic vibration, so cues never depend on a single sense.</p>
+            <p>Combined voice guidance and haptic vibration</p>
           </div>
         </div>
         <p style={{ marginTop: "1.5rem", fontFamily: "var(--font-mono)", fontSize: "0.85rem", color: "var(--accent-2)", letterSpacing: "0.06em", textTransform: "uppercase" }}>
           Core MVP
         </p>
         <p style={{ fontWeight: 600, fontSize: "1.2rem" }}>
-          Kinect sensors feed → landmark/obstacle detection → VPR localization → voice + haptic guidance
+          Kinect → landmark/obstacle detection → VPR localization → voice + haptic guidance
         </p>
-        <p className="subtitle" style={{ marginTop: "1rem" }}>
-          Out of scope for this prototype: dynamic on-the-fly map generation for unmapped spaces, expanded wearable
-          smart-band integrations, and navigation in completely unfamiliar environments — deferred to future work.
-        </p>
+        <ul className="list-clean" style={{ marginTop: "1rem" }}>
+          <li>Out of scope: dynamic map generation for unmapped spaces.</li>
+          <li>Out of scope: expanded smart-band integrations.</li>
+          <li>Out of scope: completely unfamiliar environments.</li>
+        </ul>
       </>
     ),
   },
@@ -513,11 +509,11 @@ export const slides: SlideData[] = [
           Architecture Principle
         </p>
         <h2 style={{ fontSize: "1.4rem" }}>One on-device vision pipeline, two independent feedback agents</h2>
-        <p className="subtitle" style={{ maxWidth: "820px" }}>
-          The Vision Agent turns the camera feed into an occupancy grid and publishes it to a local Message Broker.
-          The Haptic and Voice Agents each subscribe independently and decide, on their own, when and how to alert
-          the user — so a delay or failure in one channel never blocks the other.
-        </p>
+        <ul className="list-clean" style={{ maxWidth: "820px" }}>
+          <li>Vision Agent: camera feed → occupancy grid → local Message Broker.</li>
+          <li>Haptic and Voice Agents: independent subscriptions and alerts.</li>
+          <li>Independent channels: one delay or failure does not block the other.</li>
+        </ul>
       </>
     ),
   },
@@ -542,7 +538,7 @@ export const slides: SlideData[] = [
       <UMLDiagramSlide
         title="Use-Case Diagram"
         image="/images/usecase.png"
-        description="Actors and system interactions for ECHO's assistive navigation workflow."
+        description="Actors · System interactions · Assistive navigation workflow"
       />
     ),
   },
@@ -553,7 +549,7 @@ export const slides: SlideData[] = [
       <UMLDiagramSlide
         title="Sequence Diagram"
         image="/images/sequence.png"
-        description="The runtime message flow from sensing through agent processing to user feedback."
+        description="Sensing · Agent processing · User feedback"
       />
     ),
   },
@@ -564,7 +560,7 @@ export const slides: SlideData[] = [
       <UMLDiagramSlide
         title="Activity Diagram"
         image="/images/activity.png"
-        description="The activity flow for detecting, interpreting, and communicating navigation events."
+        description="Detection · Interpretation · Navigation event communication"
       />
     ),
   },
@@ -575,7 +571,7 @@ export const slides: SlideData[] = [
       <UMLDiagramSlide
         title="Class Diagram"
         image="/images/class.png"
-        description="The core software classes and relationships supporting ECHO's modular architecture."
+        description="Core software classes · Relationships · Modular architecture"
       />
     ),
   },
@@ -587,23 +583,23 @@ export const slides: SlideData[] = [
       <>
         <p className="eyebrow">09 · Methodology</p>
         <h2>Methodology</h2>
-        <p>Every agent in ECHO follows the same three-stage pipeline shape, regardless of what it does with the data:</p>
+        <p>Shared agent pipeline: Input → Process → Output</p>
         <div className="card-grid">
           <div className="card">
             <h3>Input</h3>
-            <p>Each agent subscribes to a shared Message Broker or a raw sensor stream, always starting from the same up-to-date spatial state.</p>
+            <p>Message Broker or raw sensor stream · Current spatial state</p>
           </div>
           <div className="card">
             <h3>Process</h3>
-            <p>Raw data becomes an actionable signal — a point cloud into an occupancy grid, a distance into a vibration intensity, a hazard into a spoken phrase.</p>
+            <p>Point cloud → occupancy grid · Distance → vibration · Hazard → speech</p>
           </div>
           <div className="card">
             <h3>Output</h3>
-            <p>The result goes straight to hardware — the wristband's motor driver, the in-ear audio panner, or back onto the Broker for the next agent.</p>
+            <p>Motor driver · In-ear audio panner · Message Broker</p>
           </div>
         </div>
         <p className="subtitle" style={{ marginTop: "1.5rem" }}>
-          See Modules / Main Features (Section 11) for each agent's specific input → process → output pipeline.
+          Section 11: Agent-specific input → process → output pipelines
         </p>
       </>
     ),
@@ -633,21 +629,21 @@ export const slides: SlideData[] = [
           <div className="card">
             <h3>Hardware</h3>
             <ul className="list-clean">
-              <li>Portable laptop or mini-PC with Intel i5/i7 or Ryzen 5/7 processor.</li>
-              <li>8 GB RAM minimum, 16 GB recommended for smoother VPR processing.</li>
-              <li>Kinect sensors for RGB-D scene capture and localization.</li>
-              <li>Speaker or earphone for voice guidance output.</li>
-              <li>Haptic Wristband with ESP32 / Arduino motor control.</li>
+              <li>Laptop or mini-PC · Intel i5/i7 or Ryzen 5/7</li>
+              <li>8 GB RAM minimum · 16 GB recommended for VPR</li>
+              <li>Kinect · RGB-D capture and localization</li>
+              <li>Speaker or earphone · Voice output</li>
+              <li>Haptic Wristband · ESP32 / Arduino control</li>
             </ul>
           </div>
           <div className="card">
             <h3>Software</h3>
             <ul className="list-clean">
-              <li>Python for AI modules, computer vision, and voice processing.</li>
-              <li>OpenCV and VPR libraries for visual place recognition and localization.</li>
-              <li>React + TypeScript for the presentation and interface components.</li>
-              <li>Vite for frontend development and fast local testing.</li>
-              <li>Optional cloud or local speech synthesis APIs for voice instructions.</li>
+              <li>Python · AI modules, computer vision, voice processing</li>
+              <li>OpenCV + VPR libraries · Recognition and localization</li>
+              <li>React + TypeScript · Presentation and interface</li>
+              <li>Vite · Frontend development and local testing</li>
+              <li>Cloud or local speech synthesis APIs · Optional</li>
             </ul>
           </div>
         </div>
@@ -665,23 +661,23 @@ export const slides: SlideData[] = [
         <div className="card-grid">
           <div className="card">
             <h3>Reliable Navigation</h3>
-            <p>A low-cognitive-load navigation tool for indoor use, combining computer vision, VPR, and voice guidance.</p>
+            <p>Low-cognitive-load indoor navigation · Computer vision · VPR · Voice guidance</p>
           </div>
           <div className="card">
             <h3>Real-Time Hazard Avoidance</h3>
-            <p>Continuous obstacle re-routing so the user stays clear of what's directly ahead.</p>
+            <p>Continuous obstacle detection and route adjustment</p>
           </div>
           <div className="card">
             <h3>Greater Independence</h3>
-            <p>Less reliance on sighted assistance when moving through familiar, pre-mapped indoor spaces.</p>
+            <p>Reduced reliance on sighted assistance · Familiar indoor spaces</p>
           </div>
           <div className="card">
             <h3>A Foundation to Build On</h3>
-            <p>A working base for future extensions — dynamic mapping, wearable integrations, and unfamiliar environments.</p>
+            <p>Foundation for dynamic mapping, wearable integrations, and unfamiliar environments</p>
           </div>
         </div>
         <p className="subtitle" style={{ marginTop: "1.5rem" }}>
-          Success criterion: a system that complements — not replaces — traditional aids like the cane or guide dog.
+          Success criterion: complements traditional aids such as the cane or guide dog
         </p>
       </>
     ),
@@ -697,27 +693,27 @@ export const slides: SlideData[] = [
         <div className="card-grid">
           <div className="card">
             <h3>Stage 1</h3>
-            <p>Hardware assembly — wearable housing, camera, battery, and enclosure wiring.</p>
+            <p>Wearable housing · Camera · Battery · Enclosure wiring</p>
           </div>
           <div className="card">
             <h3>Stage 2</h3>
-            <p>Vision Agent — point-cloud generation and the 2D occupancy grid pipeline.</p>
+            <p>Point-cloud generation · 2D occupancy grid pipeline</p>
           </div>
           <div className="card">
             <h3>Stage 3</h3>
-            <p>Haptic Agent — distance-to-vibration mapping and wristband integration.</p>
+            <p>Distance-to-vibration mapping · Wristband integration</p>
           </div>
           <div className="card">
             <h3>Stage 4</h3>
-            <p>Voice Agent — hazard filtering, offline TTS, and 3D audio panning.</p>
+            <p>Hazard filtering · Offline TTS · 3D audio panning</p>
           </div>
           <div className="card">
             <h3>Stage 5</h3>
-            <p>Integration — wiring all three agents through the local Message Broker.</p>
+            <p>Three-agent integration · Local Message Broker</p>
           </div>
           <div className="card">
             <h3>Stage 6</h3>
-            <p>Evaluation — indoor route trials and refinement of guidance timing.</p>
+            <p>Indoor route trials · Guidance timing refinement</p>
           </div>
         </div>
       </>
@@ -750,24 +746,24 @@ export const slides: SlideData[] = [
     content: (
       <>
         <p className="eyebrow">16 · Conclusion</p>
-        <h2>A reliable, low-cognitive-load path forward</h2>
-        <p>
-          ECHO provides a reliable, low-cognitive-load, and accessible navigation tool for visually
-          impaired users in indoor environments — grounded in real-time computer vision,
-          VPR, and voice guidance.
-        </p>
+        <h2>Reliable, low-cognitive-load indoor navigation</h2>
+        <ul className="list-clean">
+          <li>Computer vision · VPR · Voice guidance</li>
+          <li>Obstacle awareness · Accessible user support</li>
+          <li>Indoor, pre-mapped route focus</li>
+        </ul>
         <div className="card-grid">
           <div className="card">
             <h3>Dynamic map generation</h3>
-            <p>Moving beyond pre-mapped routes toward on-the-fly indoor mapping.</p>
+            <p>On-the-fly indoor mapping beyond pre-mapped routes</p>
           </div>
           <div className="card">
             <h3>Night Vision</h3>
-            <p>Integrating with IR cameras for low-light navigation.</p>
+            <p>IR camera integration for low-light navigation</p>
           </div>
           <div className="card">
             <h3>Unfamiliar environments</h3>
-            <p>Scaling navigation to spaces the system has never seen before.</p>
+            <p>Navigation in previously unseen spaces</p>
           </div>
         </div>
       </>

@@ -33,11 +33,11 @@ export function AgentDetailSlide({ agent, sectionLabel }: { agent: AgentInfo; se
 
       <div className="agent-context">
         <span>
-          receives from <strong style={{ color: agent.color }}>{agent.inputSource}</strong>
+          INPUT: <strong style={{ color: agent.color }}>{agent.inputSource}</strong>
         </span>
         <ArrowRight size={13} />
         <span>
-          delivers to <strong style={{ color: agent.color }}>{agent.outputTarget}</strong>
+          OUTPUT: <strong style={{ color: agent.color }}>{agent.outputTarget}</strong>
         </span>
       </div>
 

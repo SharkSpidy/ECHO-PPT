@@ -18,10 +18,11 @@ export function ArchitectureSlide() {
     <>
       <p className="eyebrow">10 · System Architecture / Block Diagram</p>
       <h2>How ECHO is wired together</h2>
-      <p className="subtitle">
-        Every component runs locally inside a gutted Xbox 360 S shell — no cloud, no signal to
-        lose indoors. Click an agent to see its internal pipeline.
-      </p>
+      <ul className="list-clean">
+        <li>Local processing inside Xbox 360 S shell</li>
+        <li>No cloud dependency · Indoor operation</li>
+        <li>Agent nodes: open internal pipelines</li>
+      </ul>
 
       <div className="arch-grid">
         <div className="arch-col">
