@@ -373,12 +373,6 @@ export const slides: SlideData[] = [
           <span className="pipeline-step">VPR localisation</span>
           <span className="pipeline-step">Voice + haptic guidance</span>
         </div>
-        <p style={{ ...eyebrowAccent, color: "var(--danger)", marginTop: "1.25rem" }}>Out of scope for this phase</p>
-        <ul className="list-clean" style={{ marginTop: "0.6rem" }}>
-          <li>Dynamic map generation for unmapped spaces.</li>
-          <li>Expanded smart-band integrations.</li>
-          <li>Completely unfamiliar environments.</li>
-        </ul>
       </>
     ),
   },
