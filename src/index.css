@@ -921,3 +921,162 @@ button.back-link:focus-visible {
     padding: 0.25rem 0;
   }
 }
+
+/* ==========================================================================
+   8. SECOND REVIEW ADDITIONS: figure/text splits, snapshots, title meta
+   ========================================================================== */
+
+.card--accent {
+  border-left: 3px solid var(--accent);
+}
+
+.lit-table--4 th:nth-child(1) { width: 22%; }
+.lit-table--4 th:nth-child(2) { width: 27%; }
+.lit-table--4 th:nth-child(3) { width: 29%; }
+.lit-table--4 th:nth-child(4) { width: 22%; }
+
+.figure {
+  margin: 0;
+  min-width: 0;
+}
+.figure figcaption {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  text-align: center;
+}
+.figure figcaption strong {
+  color: var(--accent);
+}
+.arch-image {
+  max-height: 46vh;
+}
+.figure--tall .uml-diagram {
+  max-height: 64vh;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 0.5rem;
+}
+.split--reverse {
+  grid-template-columns: 1fr 1.3fr;
+}
+.split-text {
+  min-width: 0;
+}
+.split-text .list-clean {
+  margin-top: 0.9rem;
+}
+.split-text li {
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  line-height: 1.5;
+}
+.split-text .subtitle {
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  margin: 0;
+}
+.split-lead {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--accent);
+  margin: 0;
+}
+.list-clean--tight {
+  gap: 0.55rem;
+}
+.list-clean--tight li {
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+.list-clean--tight li strong {
+  color: var(--accent-2);
+}
+
+.split--ui {
+  grid-template-columns: 1fr 1fr;
+}
+.phone-pair {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.phone-pair img {
+  display: block;
+  height: 58vh;
+  width: auto;
+  max-width: 48%;
+  object-fit: contain;
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.snap-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  align-items: start;
+}
+.snap-pair .uml-diagram {
+  max-height: 44vh;
+}
+
+.banner {
+  margin: 1.5rem 0 0;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--bg);
+  font-size: 1.05rem;
+}
+
+.agent-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+}
+.agent-row .agent-node-tagline {
+  white-space: normal;
+}
+
+.title-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1.75rem;
+}
+.title-logo {
+  width: 84px;
+  height: auto;
+  padding: 0.5rem;
+  background: #fff;
+  border-radius: var(--radius);
+}
+.title-meta-line {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.title-meta-muted {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 900px) {
+  .split,
+  .split--reverse,
+  .split--ui,
+  .snap-pair,
+  .agent-row {
+    grid-template-columns: 1fr;
+  }
+}

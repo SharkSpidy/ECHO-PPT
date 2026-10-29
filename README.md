@@ -1,7 +1,8 @@
-# Echo Deck
+# ECHO Deck – Project Phase I, Second Review
 
-A single Vite + React + TypeScript slideshow: the ECHO pitch deck, with the system
-architecture folded in as slides 05–08.
+A single Vite + React + TypeScript slideshow for the second review of **ECHO: AI-Powered Navigation
+Assistant for Visually Impaired Users**. All content (text, tables, figures) comes from the
+*ECHO Project Phase I report*.
 
 ```bash
 npm install
@@ -10,51 +11,24 @@ npm run build
 npm run preview
 ```
 
+## Deck structure (31 slides)
+
+Title · Team & Guidance · Table of Contents · 01 Introduction · 02 Problem Statement ·
+03 Objectives · 04 Scope · 05 Existing System · 06 Literature Review (4 pages) ·
+07 Proposed System · 08 Methodology · 09 System Architecture (Fig 4.1) ·
+10 UML Diagrams (use-case, sequence, activity, class) · 11 Modules (overview + Vision / Haptic / Voice) ·
+12 System Components · 13 Expected Outcome · 14 Snapshots (UI, wristband + top view, setup) ·
+15 SDG Mapping · 16 Conclusion · 17 References
+
 ## Navigating
 
-- **Arrow keys / Page Up / Page Down**, the **‹ ›** buttons, the **dots**, or a **swipe**
-  move through the deck in order, same as before.
-- Slide 05, **Architecture**, is a map of the whole system — battery + Kinect on the left,
-  the Raspberry Pi / Message Broker in the middle, the three agents, then the Haptic
-  Glove and In-Ear Module on the right.
-- **Click any agent node** on that slide and the deck jumps straight to that agent's
-  dedicated detail slide (06 Vision, 07 Haptic, 08 Voice), each showing its four-stage
-  pipeline (Input → Process → Process → Output).
-- Each agent slide has a **"Back to Architecture"** button at the top, or just keep using
-  the normal deck navigation — they're real slides, not a modal, so paging forward/back
-  and the slide counter/dots all account for them correctly.
+- **Arrow keys / Page Up / Page Down**, the **‹ ›** buttons, the **dots**, or a **swipe** move through the deck.
+- On the **Architecture** slide, click an agent (Vision / Haptic / Voice) to jump to its detail slide;
+  each detail slide has a **Back to Architecture** button.
 
-## How the click-through works
+## Where things live
 
-`src/context/SlideNavContext.ts` exposes a single `goTo(title)` function, provided by
-`App.tsx` (which already owns the slideshow's `current` index and `goToSlide`). Any
-slide's content can call `useSlideNav().goTo("Vision Agent")` to jump there — that's how
-the Architecture slide's agent buttons and each detail slide's back button work, without
-either needing to know numeric slide indices.
-
-Agent content (icons, pipeline steps, colors) lives once in `src/data/agents.ts` and is
-shared by both `ArchitectureSlide.tsx` (the node list) and `AgentDetailSlide.tsx` (the
-pipeline), so editing an agent's description or adding a pipeline step only needs to
-happen in one place.
-
-## Project structure
-
-```
-src/
-  App.tsx                        slideshow shell + SlideNavContext.Provider
-  index.css                      all styling (design tokens + every slide's CSS)
-  context/SlideNavContext.ts     goTo(title) navigation, shared via context
-  data/
-    slides.tsx                   the deck, one entry per slide, in order
-    agents.ts                    shared agent metadata (icons, pipeline, colors)
-  components/
-    Slide.tsx, NavControls.tsx, EchoPing.tsx   (deck chrome, unchanged)
-    ArchitectureSlide.tsx        slide 05: clickable system map
-    AgentDetailSlide.tsx         slides 06–08: one agent's pipeline
-```
-
-## Stack
-
-- Vite 8, React 19, TypeScript
-- [lucide-react](https://lucide.dev/) for icons
-- Plain CSS with custom properties for theming — no Tailwind, no external UI kit
+- `src/data/slides.tsx` – the slide list (add a slide by pushing another object).
+- `src/data/literature.ts` – literature review rows (Table 2.2 of the report).
+- `src/data/agents.ts` – the three agents' pipelines.
+- `public/images/` – all figures from the report (Fig 4.1–4.9) and the AISAT logo.
